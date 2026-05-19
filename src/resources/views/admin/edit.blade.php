@@ -19,7 +19,7 @@
 
             <div class="mb-4 p-4 bg-gray-900 rounded-lg border border-gray-700">
                 <span class="block text-xs font-semibold text-gray-500 uppercase mb-1">Nama Project</span>
-                <span class="text-sm font-bold text-white">{{ $project->title }}</span>
+                <span class="text-sm font-bold text-white">BorrowMinder - {{ $project->title }}</span>
             </div>
 
             <form action="{{ route('admin.update', $project->id) }}" method="POST" class="space-y-6">

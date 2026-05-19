@@ -41,7 +41,7 @@
                         @forelse($projects as $project)
                             <tr class="hover:bg-gray-700/30 transition">
                                 <td class="p-4 font-mono text-gray-500">{{ $project->id }}</td>
-                                <td class="p-4 font-semibold text-white">{{ $project->title }}</td>
+                               <td class="p-4 font-semibold text-white">BorrowMinder - {{ $project->title }}</td>
                                 <td class="p-4">
                                     <span class="px-2.5 py-1 text-xs font-semibold rounded bg-gray-900 text-emerald-400 border border-emerald-500/20">
                                         {{ $project->progress_status }}

@@ -1,30 +1,42 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
-    // Halaman Menu Showcase / Daftar Project
+    // Fungsi untuk menampilkan halaman utama / portfolio showcase
     public function index()
     {
-        // Mengambil semua data project dari database
         $projects = DB::table('projects')->get();
         return view('showcase.index', compact('projects'));
     }
 
-    // Halaman Detail Khusus untuk Laporan Awal Project Akhir
+    // Fungsi untuk menampilkan detail isi laporan suatu project
     public function show($id)
     {
-        // Mengambil 1 data project berdasarkan ID
         $project = DB::table('projects')->where('id', $id)->first();
-        
         if (!$project) {
-            abort(404, 'Project tidak ditemukan');
+            abort(404);
         }
-
         return view('showcase.show', compact('project'));
+    }
+
+    // Fungsi khusus untuk menyimpan data barang pinjaman baru
+    public function storePeminjaman(Request $request)
+    {
+        DB::table('peminjamans')->insert([
+            'nama_barang'   => $request->input('nama_barang'),
+            'nama_peminjam' => $request->input('nama_peminjam'),
+            'tgl_pinjam'    => $request->input('tanggal_pinjam'),
+            'status'        => 'Dipinjam',
+            'created_at'    => now(),
+            'updated_at'    => now(),
+        ]);
+
+        // Ganti /admin/dashboard menjadi /admin/daftar-peminjaman
+return redirect('/admin/daftar-peminjaman')->with('success', 'Data peminjaman berhasil masuk!');
     }
 }

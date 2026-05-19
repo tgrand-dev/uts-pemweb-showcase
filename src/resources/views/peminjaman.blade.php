@@ -6,21 +6,22 @@
 </head>
 <body class="container mt-5">
     <h2>Catat Barang Pinjaman Baru</h2>
-    <form action="/peminjaman" method="POST" class="mt-4">
-        @csrf
-        <div class="mb-3">
-            <label>Nama Barang</label>
-            <input type="text" name="nama_barang" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label>Nama Peminjam</label>
-            <input type="text" name="nama_peminjam" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label>Tanggal Pinjam</label>
-            <input type="date" name="tgl_pinjam" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Simpan Data</button>
-    </form>
-</body>
-</html>
+  <form action="{{ route('peminjaman.store') }}" method="POST">
+    @csrf 
+    <div class="mb-3">
+        <label>Nama Barang</label>
+        <input type="text" name="nama_barang" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Nama Peminjam</label>
+        <input type="text" name="nama_peminjam" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Tanggal Pinjam</label>
+        <input type="date" name="tanggal_pinjam" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Simpan Data</button>
+</form>
